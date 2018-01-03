@@ -4,7 +4,7 @@ var path = require('path');
 var gutil = require('gulp-util');
 var merge = require('merge');
 var PluginError = gutil.PluginError;
-var File = gutil.File;
+var Vinyl = require("vinyl");
 
 module.exports = function (fileName, converter) {
   var config;
@@ -85,7 +85,7 @@ module.exports = function (fileName, converter) {
       var joinedPath = path.join(firstFile.base, fileName);
 
       try {
-        var joinedFile = new File({
+        var joinedFile = new Vinyl({
           cwd: firstFile.cwd,
           base: firstFile.base,
           path: joinedPath,
